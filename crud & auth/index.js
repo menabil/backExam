@@ -8,13 +8,13 @@ const {
   loginController,
   logoutController,
 } = require("./controller/authController");
-const { logLimiter } = require("./utils/limiter");
 const {
   createUser,
   readUser,
   deleteUser,
   updateUser,
 } = require("./controller/crudController");
+const { logLimiter } = require("./utils/limiter");
 
 const app = express();
 app.use(express.json());
