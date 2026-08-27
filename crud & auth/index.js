@@ -9,6 +9,12 @@ const {
   logoutController,
 } = require("./controller/authController");
 const { logLimiter } = require("./utils/limiter");
+const {
+  createUser,
+  readUser,
+  deleteUser,
+  updateUser,
+} = require("./controller/crudController");
 
 const app = express();
 app.use(express.json());
@@ -19,6 +25,10 @@ app.post("/reg", regController);
 app.post("/otp", logLimiter, otpController);
 app.post("/login", logLimiter, loginController);
 app.post("/logout", logoutController);
+app.post("/login", createUser);
+app.get("/alldata", readUser);
+app.delete("/delete/:id", deleteUser);
+app.post("/update/:id", updateUser);
 
 mongoose
   .connect(
